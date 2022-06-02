@@ -1,4 +1,7 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../../store/app.state';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-card-value',
@@ -6,11 +9,14 @@ import { Component, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./card-value.component.scss']
 })
 export class CardValueComponent implements OnInit {
-  @Input() counter = 0;
 
-  // counter = 0;
+  constructor(private store: Store<{app: IAppState}>) {}
 
-  constructor() {}
+  counter$ = this.store
+    .select('app')
+    .pipe(
+      map((e: IAppState) => e.counter)
+    )
 
   ngOnInit(): void {}
 
