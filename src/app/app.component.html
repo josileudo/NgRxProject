@@ -1,11 +1,11 @@
 <div class="cart">
-  <app-card-value [counter]="counter"></app-card-value>
+  <app-card-value></app-card-value>
 
   <div class="cart-value">
-    <h1>{{ counter }}</h1>
+    <h1>{{ counter$ | async }}</h1>
     <div class="cart-button">
-      <button class="button" (click)="counter = counter - 1">Decrement</button>
-      <button class="button" (click)="counter = counter + 1">Increment</button>
+      <button class="button" (click)="decrementCounter()">Decrement</button>
+      <button class="button" (click)="incrementCounter()">Increment</button>
     </div>
   </div>
 </div>
