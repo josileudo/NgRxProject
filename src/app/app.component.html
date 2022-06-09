@@ -1,3 +1,8 @@
+<div class="header">
+  <input #counterInput class="header_input">
+  <button class="header_button button" (click)="inputCounter(counterInput.value)">Set Counter</button>
+</div>
+
 <div class="cart">
   <app-card-value></app-card-value>
 
@@ -8,5 +13,6 @@
       <button class="button" (click)="incrementCounter()">Increment</button>
     </div>
   </div>
+
 </div>
 

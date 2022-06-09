@@ -1,3 +1,31 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px;
+
+  .header_input {
+    padding: 8px 0px;
+    width: calc(80% - 80px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    border-radius: 6px;
+  }
+
+  .header_button {
+    font-size: 20px;
+    padding: 10px;
+
+    margin-left: 10px;
+    border-radius: 6px;
+  }
+}
+
 .cart {
   width: 100%;
   height: 100%;
@@ -21,7 +49,7 @@
 
   background:rgba(0, 0, 0, 0.09);
   border: none;
-  font-family: bold;
+  font-weight: bold;
   font-size: 18px;
 
   cursor: pointer;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { IAppState, incrementCounter, decrementCounter } from './store/app.state';
+import { IAppState, incrementCounter, decrementCounter, inputCounter } from './store/app.state';
 
 @Component({
   selector: 'app-root',
@@ -24,5 +24,11 @@ export class AppComponent {
 
   incrementCounter() {
     this.store.dispatch(incrementCounter());
+  }
+
+  inputCounter(value: string) {
+    const valueTreated = parseFloat(value);
+
+    this.store.dispatch(inputCounter({ payload: valueTreated }));
   }
 }
