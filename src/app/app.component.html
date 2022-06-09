@@ -1,6 +1,8 @@
 <div class="header">
   <input #counterInput class="header_input">
-  <button class="header_button button" (click)="inputCounter(counterInput.value)">Set Counter</button>
+  <button class="header_button button" (click)="inputCounter(counterInput.value)">
+    Set Counter
+  </button>
 </div>
 
 <div class="cart">
@@ -15,4 +17,11 @@
   </div>
 
 </div>
+
+
+<ul>
+  <li *ngFor="let item of todos">
+    {{item.title}}
+  </li>
+</ul>
 
