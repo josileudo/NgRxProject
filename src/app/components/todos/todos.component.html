@@ -1,0 +1,9 @@
+<button routerLink="/user-datails" class="button">
+  User details
+</button>
+
+<ul>
+  <li *ngFor="let item of todos$ | async">
+    {{item.title}}
+  </li>
+</ul>
