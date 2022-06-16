@@ -15,6 +15,8 @@ export const incrementCounter = createAction('[App] Counter increase');
 export const decrementCounter = createAction('[App] Counter decrease');
 export const inputCounter = createAction('[App] Counter input', props<{payload: number}>());
 
+export const loadingTodo= createAction('[App] Loading Todos');
+export const successTodoLoading= createAction('[App] [Success] Todos loading')
 export const setTodo= createAction('[App] Define Todos', props<{payload:ITodo[]}>());
 
 export const appReducer = createReducer(

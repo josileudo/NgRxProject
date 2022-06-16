@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { IAppState, setTodo } from '../../store/app.state';
+import { IAppState, loadingTodo, setTodo } from '../../store/app.state';
 import { map } from 'rxjs';
 
 export interface ITodo {
@@ -25,18 +25,6 @@ export class TodosComponent implements OnInit {
   todos$ = this.store.select('app').pipe(map((app) => app.todos));
 
   ngOnInit(): void {
-    this.todos$.subscribe({
-      next: (todos) => {
-        if (!todos.length) {
-          this.http
-            .get<ITodo[]>('https://jsonplaceholder.typicode.com/todos')
-            .subscribe({
-              next: (response: ITodo[]) => {
-                this.store.dispatch(setTodo({ payload: response }));
-              },
-            });
-        }
-      },
-    });
+    this.store.dispatch(loadingTodo());
   }
 }
