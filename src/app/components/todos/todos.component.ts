@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { IAppState, loadingTodo, setTodo } from '../../store/app.state';
+import { IAppState, loadingTodo } from '../../store/app.state';
 import { map } from 'rxjs';
-
-export interface ITodo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
 
 @Component({
   selector: 'app-todos',
@@ -18,7 +10,6 @@ export interface ITodo {
 })
 export class TodosComponent implements OnInit {
   constructor(
-    private http: HttpClient,
     private store: Store<{ app: IAppState }>
   ) {}
 
