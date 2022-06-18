@@ -8,11 +8,12 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { CardValueComponent } from './components/card-value/card-value.component';
-import { appReducer } from './store/app.state';
+import { todoReducer } from './store/reducers/todo.reducers'
 import { environment } from '../environments/environment';
 import { UserDatailsComponent } from './components/user-datails/user-datails.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { TodoEffect } from './store/effects/todo.effect';
+import { TodoDispatch } from './store/dispatchers/todo.dispatchers';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,12 @@ import { TodoEffect } from './store/effects/todo.effect';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({app: appReducer}),
+    StoreModule.forRoot({app: todoReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     HttpClientModule,
     EffectsModule.forRoot([TodoEffect])
   ],
-  providers: [],
+  providers: [TodoDispatch],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

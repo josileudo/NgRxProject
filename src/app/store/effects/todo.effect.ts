@@ -8,7 +8,6 @@ import * as TodoAction from '../actions/todo.actions'
 import { IAppState } from '../../core/model/app-state';
 import { ITodo } from '../../core/model/todo';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -21,7 +20,7 @@ export class TodoEffect {
 
   loadTodo$ = createEffect(() =>
     this.action$.pipe(
-      ofType(TodoAction.loadTodo),
+      ofType(TodoAction.getTodo),
       withLatestFrom(
         this.store.select('app').pipe(map((app: IAppState) => app.todos))
       ),
