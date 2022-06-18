@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IAppState, loadingTodo } from '../../store/app.state';
 import { map } from 'rxjs';
+import { loadTodo } from 'src/app/store/actions/todo.actions';
+import { IAppState } from '../../core/model/app-state';
 
 @Component({
   selector: 'app-todos',
@@ -9,13 +10,11 @@ import { map } from 'rxjs';
   styleUrls: ['./todos.component.scss'],
 })
 export class TodosComponent implements OnInit {
-  constructor(
-    private store: Store<{ app: IAppState }>
-  ) {}
+  constructor( private store: Store<{ app: IAppState }> ) {}
 
   todos$ = this.store.select('app').pipe(map((app) => app.todos));
 
   ngOnInit(): void {
-    this.store.dispatch(loadingTodo());
+    this.store.dispatch(loadTodo());
   }
 }

@@ -1,36 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { IAppState, incrementCounter, decrementCounter, inputCounter } from './store/app.state';
 
-export interface ITodo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import { IAppState } from './core/model/app-state';
+import { addCounter, decrementCounter, incrementCounter } from './store/actions/todo.actions';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
-  todos: ITodo[] = [];
+export class AppComponent {
 
-  constructor (
-    private store: Store<{app: IAppState}>,
-    private http: HttpClient,
-  ) {}
-
-  ngOnInit(): void {
-    this.http.get<ITodo[]>('https://jsonplaceholder.typicode.com/todos')
-      .subscribe({
-        next: (response: ITodo[]) => this.todos = response
-      })
-  }
+  constructor (private store: Store<{app: IAppState}>) {}
 
   counter$ = this.store
     .select('app')
@@ -49,6 +32,6 @@ export class AppComponent implements OnInit{
   inputCounter(value: string) {
     const valueTreated = parseFloat(value);
 
-    this.store.dispatch(inputCounter({ payload: valueTreated }));
+    this.store.dispatch(addCounter({ payload: valueTreated }));
   }
 }

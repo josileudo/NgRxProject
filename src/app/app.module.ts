@@ -12,7 +12,7 @@ import { appReducer } from './store/app.state';
 import { environment } from '../environments/environment';
 import { UserDatailsComponent } from './components/user-datails/user-datails.component';
 import { TodosComponent } from './components/todos/todos.component';
-import { TodoEffectService } from './store/todo-effect.service';
+import { TodoEffect } from './store/effects/todo.effect';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { TodoEffectService } from './store/todo-effect.service';
     StoreModule.forRoot({app: appReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     HttpClientModule,
-    EffectsModule.forRoot([TodoEffectService])
+    EffectsModule.forRoot([TodoEffect])
   ],
   providers: [],
   bootstrap: [AppComponent]
